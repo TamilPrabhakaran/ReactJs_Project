@@ -1,0 +1,20 @@
+
+
+.cardcss{
+    /* background-color: blue; */
+    width: 10vw;
+    height: 15vh;
+}
+
+.card-detail{
+    color: whitesmoke;
+    height: 10vh;
+    /* background: yellow; */
+    padding-top: 23vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+.mainCard:hover{
+    transform: scale(0.9);
+
+}
