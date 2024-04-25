@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 function Loginpage() {
 
+  
+
   return (
+
     <div className='container  position-absolute '>
       {/* <img src="login-bg.png" alt="" /> */}
       <div className='col bg-inf container overflow-hidden d-none d-lg-flex '>

@@ -24,7 +24,8 @@ function Titlebar() {
     <Container className='bg-dange'>
 
       <Navbar.Brand href="#">
-      <Link to='/'> <img src="./images/foodlogo.jpg" alt="" width={70} height={70} className="d-inline-block"/></Link>
+      
+      <Link to='/'> <img src="./images/Logo.jpg" alt="" width={150} height={100} className="d-inline-block"/></Link>
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="navbarScroll" />

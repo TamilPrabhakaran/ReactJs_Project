@@ -15,10 +15,6 @@
     /* justify-items: space-between; */
    
 }   
-.image{
-     
-    filter: drop-shadow(10px 5px 10px rgb(86, 228, 183));
-}
 .regform{
     display: flex;
     align-items: center;

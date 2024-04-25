@@ -17,7 +17,7 @@ function RegisterPage() {
 
   event.preventDefault()
 
-  axios.post("http://localhost:1010/user/add", userdata)
+  axios.post("http://localhost:1010/user/add/2", userdata)
   .then((res)=>{
     console.log(res)
     console.log(userdata);
@@ -29,9 +29,10 @@ function RegisterPage() {
  }
   
   return (
-    <div className='container position-absolute '>
+    <div className='container bg-dange  '>
     {/* <img src="login-bg.png" alt="" /> */}
-    <div className='col  bg-inf container2 d-none d-lg-flex   overflow-hidden '><img src="firstimage.png" alt="" srcset="" width={650} height={500} className='image' /></div>
+    <div className='col  bg-inf container d-none d-lg-flex   overflow-hidden p-5 '>
+      <img src="/images/loginlogo.gif" alt="" srcset="" width={350} height={300} /></div>
 
   <div className='col align-content-center d-flex align-items-center justify-content-center bg-dar '> 
     <div className='regform w-75 bg-dange   '>
@@ -53,7 +54,7 @@ function RegisterPage() {
     </Form.Group>
     <div className='text-center bg-dange' >
 
-    <Button variant="primary" type='submit' >Submit</Button>  <br /><Link to="/" className=' ' >Signup?</Link>
+    <Button variant="primary" type='submit' >Submit</Button>  <br /><Link to="/login" className=' ' >Signup?</Link>
 </div>
   </Form>
     </div>
