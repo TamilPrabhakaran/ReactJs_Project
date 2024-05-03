@@ -11,6 +11,8 @@ import Featured from './Featured'
 import User from './User'
 import Userdetail from './Userdetail'
 import SearchParams from './SearchParams'
+import PropsUsingUseContext from './PropsUsingUseContext'
+import Adminpage from './Adminpage'
 
 function App() {
 
@@ -29,6 +31,7 @@ function App() {
       <Route path='/user' element={<User/>}></Route>
       <Route path='/user/:id' element={<Userdetail/>}></Route>
       <Route path='/search' element={<SearchParams/>}></Route>
+      <Route path='/usecontext' element={<PropsUsingUseContext/>}></Route>
      </Routes>
     </>
   )

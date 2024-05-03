@@ -9,6 +9,7 @@ import Cart from './Cart'
 import Search from './Search'
 import Signinpage from './Signinpage'
 import Titlebar from './Titlebar'
+import Adminpage from './Adminpage'
 
 function Home() {
   return (
@@ -21,6 +22,8 @@ function Home() {
          <Route path='/offer' element={<Offerpage/>}></Route>
          <Route path='/login' element={<Signinpage/>}></Route>
          <Route path='/cart' element={<Cart/>}></Route>
+      <Route path='/Admin' element={<Adminpage/>}></Route>
+
 
       {/* <Route path='/login' element={<Loginpage/>}></Route> */}
       <Route path='/register' element={<RegisterPage/>}></Route>

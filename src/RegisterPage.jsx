@@ -1,68 +1,184 @@
-import React, { useState } from 'react'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
-import './registercss.css'
-import axios from 'axios'
+import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import "./registercss.css";
+import axios from "axios";
 function RegisterPage() {
+  const [validate, setvalidate] = useState("");
 
-  const[userdata, setuserdata]=useState({ })
+  const [userdata, setuserdata] = useState({
+    username: "",
+    phoneno: "",
+    email: "",
+    password: "",
+  });
 
- const changes=(e)=>{
-  setuserdata({...userdata,[e.target.name]:e.target.value})
-  console.log(userdata);
- }
+  const [usernamevalid, setusernamevalid] = useState(false);
+  const [moblievalid, setmoblievalid] = useState(false);
+  const [emailvalid, setemailvalid] = useState(false);
+  const [passwordvalid, setpasswordvalid] = useState(false);
 
- const formSubmit=(event)=>{
+  const [usernameerror, setusernameerror] = useState("");
+  const [moblieerror, setmoblieerror] = useState("");
+  const [emailerror, setemailerror] = useState("");
+  const [passworderror, setpassworderror] = useState("");
 
-  event.preventDefault()
+  const changes = (e) => {
+    setuserdata({ ...userdata, [e.target.name]: e.target.value });
+  };
 
-  axios.post("http://localhost:1010/user/add/2", userdata)
-  .then((res)=>{
-    console.log(res)
-    console.log(userdata);
-  })
-  .catch((err)=>{
-    console.log(err);
-  })
-  
- }
-  
+  const formSubmit = (event) => {
+    event.preventDefault();
+
+    if (!userdata.username == "") {
+      if (userdata.username.length >= 3) {
+        setusernameerror("");
+        setusernamevalid(true);
+      } else {
+        setusernameerror("Enter Minimum 3 Character");
+      }
+    } else {
+      setusernameerror("Please Fill The Username");
+    }
+
+    const passwordPattern =
+      /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (!userdata.password == "") {
+      const ispassvalid = userdata.password.match(passwordPattern);
+      if (ispassvalid) {
+        setpassworderror("");
+        setpasswordvalid(true);
+      } else {
+        setpassworderror(
+          "password must be have one number, one captial letter, one small letter and one symbol, minimum 8 charactare"
+        );
+      }
+    } else {
+      setpassworderror("Please Enter The Password");
+    }
+    const emailPattern = /^[^\.\s][\w\-]+(\.[\w\-]+)*@([\w-]+\.)+[\w-]{2,}$/;
+    if (!userdata.email == " ") {
+      const isemailvalid = userdata.email.match(emailPattern);
+      if (isemailvalid) {
+        setemailerror("");
+        setemailvalid(true);
+      } else {
+        setemailerror("Enter a Correct Email");
+      }
+    } else {
+      setemailerror("Please Enter a Email");
+    }
+    if (!userdata.phoneno == "") {
+      if (userdata.phoneno.length == 10) {
+        setmoblievalid(true);
+        setmoblieerror("");
+      } else {
+        setmoblieerror("Mobile no only have 10 digits");
+      }
+    } else {
+      setmoblieerror("Please Fill The mobile no");
+    }
+
+    if (
+      usernamevalid == true &&
+      moblievalid == true &&
+      emailvalid == true &&
+      passwordvalid == true
+    ) {
+      axios
+        .post("http://localhost:1010/user/add", userdata)
+        .then((res) => {
+          console.log(res);
+          console.log(userdata);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      setuserdata({
+        ...userdata,
+        username: "",
+        phoneno: "",
+        email: "",
+        password: "",
+      });
+    }
+  };
+
   return (
-    <div className='container bg-dange  '>
-    {/* <img src="login-bg.png" alt="" /> */}
-    <div className='col  bg-inf container d-none d-lg-flex   overflow-hidden p-5 '>
-      <img src="/images/loginlogo.gif" alt="" srcset="" width={350} height={300} /></div>
+    <div className="container bg-success  ">
+      {/* <img src="login-bg.png" alt="" /> */}
+      <div className="col  bg-inf container d-none d-lg-flex   overflow-hidden p-5 ">
+        <img
+          src="/images/loginlogo.gif"
+          alt=""
+          srcset=""
+          width={350}
+          height={300}
+        />
+      </div>
 
-  <div className='col align-content-center d-flex align-items-center justify-content-center bg-dar '> 
-    <div className='regform w-75 bg-dange   '>
-    <Form onSubmit={formSubmit}>
-    <Form.Group className="mb-3 " controlId="formGroupEmail">
-      <Form.Label>Username</Form.Label>
-      <Form.Control type="text" placeholder="Username" name='username' value={userdata.Username} onChange={changes} />
-    </Form.Group><Form.Group className="mb-3" controlId="formGroupEmail">
-      <Form.Label>PhoneNo</Form.Label>
-      <Form.Control type="number" placeholder="PhoneNo" name='phoneno'value={userdata.Phoneno} onChange={changes}/>
-    </Form.Group>
-    <Form.Group className="mb-3" controlId="formGroupEmail">
-      <Form.Label>E-Mail</Form.Label>
-      <Form.Control type="email" placeholder="E-Mail" name='email' value={userdata.Email} onChange={changes} />
-    </Form.Group>
-    <Form.Group className="mb-3" controlId="formGroupPassword">
-      <Form.Label>Password</Form.Label>
-      <Form.Control type="password" placeholder="Password" name='password' value={userdata.password} onChange={changes}/>
-    </Form.Group>
-    <div className='text-center bg-dange' >
-
-    <Button variant="primary" type='submit' >Submit</Button>  <br /><Link to="/login" className=' ' >Signup?</Link>
-</div>
-  </Form>
+      <div className="col align-content-center d-flex align-items-center justify-content-center bg-dar ">
+        <div className="regform w-75 bg-dange   ">
+          <Form onSubmit={formSubmit}>
+            <Form.Group className="mb-3 " controlId="formGroupEmail">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={userdata.username}
+                onChange={changes}
+              />
+              <span className=" text-danger fw-bold ">{usernameerror}</span>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Label>PhoneNo</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="PhoneNo"
+                name="phoneno"
+                value={userdata.phoneno}
+                onChange={changes}
+              />
+              <span className=" text-danger fw-bold ">{moblieerror}</span>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Label>E-Mail</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="E-Mail"
+                name="email"
+                value={userdata.email}
+                onChange={changes}
+              />
+              <span className=" text-danger fw-bold ">{emailerror}</span>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formGroupPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={userdata.password}
+                onChange={changes}
+              />
+              <span className=" text-danger fw-bold ">{passworderror}</span>
+            </Form.Group>
+            <div className="text-center bg-dange">
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>{" "}
+              <br />
+              <Link to="/login" className=" ">
+                Signup?
+              </Link>
+            </div>
+          </Form>
+        </div>
+      </div>
     </div>
-  
-  </div>
-  
-  </div>
-  )
+  );
 }
 
-export default RegisterPage
+export default RegisterPage;

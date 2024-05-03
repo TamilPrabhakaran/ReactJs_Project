@@ -43,15 +43,43 @@
     /* width: 5vw; */
     min-width: max-content;
     max-height: max-content;
-    
     color: 212529;
     /* background-color: green; */
-    
     border-radius: 17px;
     padding-top: 0.5vh;
     box-shadow: 0px 0px 2px gray;
     border: solid 1px gray;
 }
 .scroll-line::-webkit-scrollbar{
+    appearance: none;
+}
+.list-text2{
+    list-style: none;
+    min-width: max-content;
+    max-height: max-content;
+
+}
+.target-list2{
+    text-align: center;
+    /* width: 5vw; */
+    min-width: max-content;
+    max-height: max-content;
+    color: 212529;
+    /* background-color: green; */
+    border-radius: 6px;
+    box-shadow: 0px 0px 2px gray;
+    border: solid 1px gray;
+}
+.target-list3{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    box-shadow: 0px 0px 2px gray;
+    border: solid 1px gray;
+
+}
+.design::-webkit-scrollbar{
     appearance: none;
 }

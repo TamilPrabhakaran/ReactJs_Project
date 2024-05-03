@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
+
 function SearchParams() {
 
     const [searchparams, setsearchparams]= useSearchParams (
