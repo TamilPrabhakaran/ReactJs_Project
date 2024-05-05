@@ -1,0 +1,18 @@
+
+.target-p{
+    
+    color: whitesmoke;
+    border-color: rgb(247, 117, 3);
+    background-color:rgb(248, 117, 3);
+    padding: 7px;
+    margin-left: 4rem;
+    max-width: max-content;
+    max-height: max-content;
+    border-radius: 1px;
+    font-weight: bolder;
+
+}
+.target-image{
+   /* mix-blend-mode: multiply; */
+   /* background-blend-mode: multiply; */
+}

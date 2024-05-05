@@ -16,8 +16,8 @@ function Search() {
 
       <h3 className='fw-bold '>Popular Cuisines</h3>
 
-      <div className='container bg-secondar '>
-          <div className='d-flex  gap-3  overflow-hidde overflow-x-scroll  scroll-line px-4 '>
+      <div className='container bg-secondar overflow-x-scroll bg-blac   scroll-line'>
+          <div className='d-flex  gap-3  overflow-hidde  '>
 
              <div> <img src="/images/asset 11.jpeg" alt="" width={150} height={180}/></div>
              <div> <img src="/images/asset 12.jpeg" alt="" width={150} height={180}/></div>  

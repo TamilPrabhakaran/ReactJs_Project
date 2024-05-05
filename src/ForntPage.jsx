@@ -11,7 +11,7 @@ function ForntPage() {
       <div className='container bg-succes '> <h3 className='fw-bold '>What's on your mind?</h3>  </div> 
 
        <div className='container bg-secondar '>
-          <div className='d-flex  gap-3  overflow-hidde overflow-x-scroll  scroll-line'>
+          <div className='d-flex  gap-3  overflow-hidde overflow-x-scroll  scroll-line '>
 
              <div> <img src="/images/asset 0.jpeg" alt="" width={150} height={180}/></div>
              <div> <img src="/images/asset 1.jpeg" alt="" width={150} height={180}/></div>
@@ -42,14 +42,14 @@ function ForntPage() {
 
         <br />
 
-      <div className='container bg-dange  '>
+      <div className='container bg-dange '>
         
-          <div className=' bg-dange row g-5  '>
+          <div className=' bg-dange row g-5'>
 
-            <div className='col-lg-3 col-md-6 col-sm-12 mainCard'>
+            <div className='col-lg-3 col-md-6 col-sm-12 mainCard '>
             <Link to='' style={{textDecoration:'none'}}>
       <Card style={{background:'white', borderColor:'white'}}>
-      <Card.Img variant="top" src="/images/asset 20.jpeg" className='position-relative' style={{maxHeight:'200px', borderRadius:'20px'}} />
+      <Card.Img variant="top" src="/images/asset 20.jpeg" className='position-relative ' style={{maxHeight:'200px', borderRadius:'20px'}} />
       <Card.Body className='position-absolute '>
         <Card.Title className='card-detail'>ITEMS AT &#8377;179 </Card.Title>
       </Card.Body>

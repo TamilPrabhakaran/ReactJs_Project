@@ -11,10 +11,12 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import Button from 'react-bootstrap/Button'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import Form from 'react-bootstrap/Form'
 import { NavbarCollapse } from 'react-bootstrap'
+import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 function Titlebar() {
     // const [open, setopen]=useState(false)
     // const handclick=()=>setopen(!open)
@@ -46,7 +48,7 @@ function Titlebar() {
         </Nav.Item>
 
         <Nav.Item>
-         <Link to='/cart' className='nav-link'><GrCart /> Cart</Link>
+          <Link to='/cart'className="nav-link"><GrCart />Cart</Link>
         </Nav.Item>
         </Nav>
       </Navbar.Collapse>

@@ -1,3 +1,4 @@
+
 .cardcss{
     /* background-color: blue; */
     width: 10vw;
@@ -6,7 +7,6 @@
 
 .card-detail{
   text-shadow: 0px 0px 5px rgb(13, 13, 13);
-
     color: whitesmoke;
     height: 10vh;
     /* background: yellow; */
@@ -19,6 +19,7 @@
     transform: scale(0.9);
 }
 .mainCard{
+    
     transition: all 0.3s;
 }
 
