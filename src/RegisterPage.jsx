@@ -57,6 +57,7 @@ function RegisterPage() {
     } else {
       setpassworderror("Please Enter The Password");
     }
+    
     const emailPattern = /^[^\.\s][\w\-]+(\.[\w\-]+)*@([\w-]+\.)+[\w-]{2,}$/;
     if (!userdata.email == " ") {
       const isemailvalid = userdata.email.match(emailPattern);
@@ -106,9 +107,9 @@ function RegisterPage() {
   };
 
   return (
-    <div className="container bg-success  ">
+    <div className="container bg-succes mt-5 p-3  ">
       {/* <img src="login-bg.png" alt="" /> */}
-      <div className="col  bg-inf container d-none d-lg-flex   overflow-hidden p-5 ">
+      <div className="col  bg-inf container d-none d-lg-flex  overflow-hidden p-5 ">
         <img
           src="/images/loginlogo.gif"
           alt=""
@@ -119,8 +120,8 @@ function RegisterPage() {
       </div>
 
       <div className="col align-content-center d-flex align-items-center justify-content-center bg-dar ">
-        <div className="regform w-75 bg-dange   ">
-          <Form onSubmit={formSubmit}>
+        <div className="regform  bg-dange shadow-lg w-100 p-5 pb-2  ">
+          <Form onSubmit={formSubmit} className=" w-100 ">
             <Form.Group className="mb-3 " controlId="formGroupEmail">
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -166,11 +167,25 @@ function RegisterPage() {
               <span className=" text-danger fw-bold ">{passworderror}</span>
             </Form.Group>
             <div className="text-center bg-dange">
-              <Button variant="primary" type="submit">
-                Submit
+              <Button
+                style={{
+                  fontWeight: "bolder",
+                  background: "#fc8019",
+                  borderColor: "#fc8019",
+                  borderRadius: "5px",
+                }}
+                type="submit"
+              >
+                SUBMIT
               </Button>{" "}
               <br />
-              <Link to="/login" className=" ">
+              <Link to="/login" className=" "
+              style={{
+                textDecoration: "none",
+                color: "#fc8019",
+                fontWeight: "bold"
+              }}
+              >
                 Signup?
               </Link>
             </div>

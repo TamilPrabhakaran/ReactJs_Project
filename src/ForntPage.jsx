@@ -48,10 +48,10 @@ function ForntPage() {
 
             <div className='col-lg-3 col-md-6 col-sm-12 mainCard '>
             <Link to='' style={{textDecoration:'none'}}>
-      <Card style={{background:'white', borderColor:'white'}}>
-      <Card.Img variant="top" src="/images/asset 20.jpeg" className='position-relative ' style={{maxHeight:'200px', borderRadius:'20px'}} />
+      <Card style={{background:'white', borderColor:'white'}} className=' image '>
+      <Card.Img variant="top" src="/images/asset 20.jpeg" className='position-relative' style={{maxHeight:'200px', borderRadius:'20px'}} />
       <Card.Body className='position-absolute '>
-        <Card.Title className='card-detail'>ITEMS AT &#8377;179 </Card.Title>
+        <Card.Title className='card-detail '>ITEMS AT &#8377;179 </Card.Title>
       </Card.Body>
 
         <Card.Text className='bg-warnin pt-2 px-3 '>
@@ -214,11 +214,11 @@ function ForntPage() {
       </Card.Body>
 
         <Card.Text className='bg-warnin pt-2 px-3 '>
-        <span style={{fontSize:'1.2rem', color:'02060c', fontWeight:'bold'}}>NIC Ice Creams</span>
+        <span style={{fontSize:'1.2rem', color:'02060c', fontWeight:'bold'}}>KFC</span>
         <br />
-        <img src="./images/star.png" alt="" width={20} height={20} className="d-inline-block"/> <span style={{color:'212529', fontWeight:'bold'}}>4.4 |20-30 mins</span> <br />
+        <img src="./images/star.png" alt="" width={20} height={20} className="d-inline-block"/> <span style={{color:'212529', fontWeight:'bold'}}>4.2 |25-30 mins</span> <br />
 
-        <span style={{color:'#02060c', opacity:'60.0%', fontWeight:'400'}}>Ice Cream, Desserts</span> <br /> <span style={{color:'#02060c', opacity:'60.0%', fontWeight:'400'}}>KK Nagar</span>
+        <span style={{color:'#02060c', opacity:'60.0%', fontWeight:'400'}}>Burger,Fast Food, Roll, & Wraps</span> <br /> <span style={{color:'#02060c', opacity:'60.0%', fontWeight:'400'}}>Kalavasal</span>
         </Card.Text>
     </Card>
     </Link>
@@ -300,7 +300,7 @@ function ForntPage() {
         <Card.Text className='bg-warnin pt-2 px-3 '>
         <span style={{fontSize:'1.2rem', color:'02060c', fontWeight:'bold'}}>La Pino's Pizza</span>
         <br />
-        <img src="./images/star.png" alt="" width={20} height={20} className="d-inline-block"/> <span style={{color:'212529', fontWeight:'bold'}}>4. |30-35  mins</span> <br />
+        <img src="./images/star.png" alt="" width={20} height={20} className="d-inline-block"/> <span style={{color:'212529', fontWeight:'bold'}}>4.1 |30-35  mins</span> <br />
 
         <span style={{color:'#02060c', opacity:'60.0%', fontWeight:'400'}}>Pizza, Pastas, Italian, Desserts</span> <br /> <span style={{color:'#02060c', opacity:'60.0%', fontWeight:'400'}}>KK Nagar</span>
         </Card.Text>

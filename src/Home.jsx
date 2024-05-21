@@ -22,9 +22,7 @@ function Home() {
          <Route path='/offer' element={<Offerpage/>}></Route>
          <Route path='/login' element={<Signinpage/>}></Route>
          <Route path='/cart' element={<Cart/>}></Route>
-      <Route path='/Admin' element={<Adminpage/>}></Route>
-
-
+      <Route path='/admin' element={<Adminpage/>}></Route>
       {/* <Route path='/login' element={<Loginpage/>}></Route> */}
       <Route path='/register' element={<RegisterPage/>}></Route>
     </Routes>

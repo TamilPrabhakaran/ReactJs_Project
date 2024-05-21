@@ -12,7 +12,6 @@
     font-weight: bolder;
 
 }
-.target-image{
-   /* mix-blend-mode: multiply; */
-   /* background-blend-mode: multiply; */
+.target-link{
+    text-decoration: none;
 }
