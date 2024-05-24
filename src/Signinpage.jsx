@@ -16,9 +16,6 @@ function Signinpage() {
     password: "",
   });
 
-  const [usernamevalid, setusernamevalid] = useState(false);
-  const [passwordvalid, setpasswordvalid] = useState(false);
-
   const [usernameerror, setusernameerror] = useState("");
   const [passworderror, setpassworderror] = useState("");
 
@@ -28,55 +25,49 @@ function Signinpage() {
   };
   const savedata = (event) => {
     event.preventDefault();
-
+          //Username
     if (!logdata.username == "") {
       if (logdata.username.length >= 3) {
         setusernameerror("");
-        setusernamevalid(true);
+
+          //Password
+        const passwordPattern = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        if (!logdata.password == "") {
+          const ispassvalid = logdata.password.match(passwordPattern);
+          if (ispassvalid) {
+            setpassworderror("");
+            axios
+              .get(
+                `http://localhost:1010/user/get/${logdata.username}/${logdata.password}`
+              )
+              .then((res) => {
+                console.log(res.data);
+                if (
+                  logdata.username == res.data.username &&
+                  logdata.password == res.data.password
+                ) {
+                  navigate("/admin");
+                  setpassworderror("");
+                } else {
+                  setpassworderror("Username or password is wrong!");
+                  console.log(logdata.username);
+                  console.log(logdata.password);
+                }
+              });
+          } 
+          else {
+            setpassworderror(
+              "password must be have one number, one captial letter, one small letter and one symbol, minimum 8 charactare"
+            );
+          }
+        } else {
+          setpassworderror("Please Enter The Password");
+        }
       } else {
         setusernameerror("Enter Minimum 3 Character");
       }
     } else {
       setusernameerror("Please Fill The Username");
-    }
-
-    const passwordPattern =
-      /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-
-    if (!logdata.password == "") {
-      const ispassvalid = logdata.password.match(passwordPattern);
-      if (ispassvalid) {
-        setpassworderror("");
-        setpasswordvalid(true);
-      } else {
-        setpassworderror(
-          "password must be have one number, one captial letter, one small letter and one symbol, minimum 8 charactare"
-        );
-      }
-    } else {
-      setpassworderror("Please Enter The Password");
-    }
-
-    if (usernamevalid == true && passwordvalid == true) {
-      axios
-        .get(
-          `http://localhost:1010/user/get/${logdata.username}/${logdata.password}`
-        )
-        .then((res) => {
-          console.log(res.data);
-          if (
-            logdata.username == res.data.username &&
-            logdata.password == res.data.password
-          ) {
-            navigate("/admin");
-            setpassworderror("");
-          } else {
-            setpassworderror("Username or password is wrong!");
-            console.log(logdata.username);
-            console.log(logdata.password);
-            
-          }
-        });
     }
   };
 

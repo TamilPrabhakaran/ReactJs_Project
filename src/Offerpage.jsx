@@ -31,6 +31,17 @@ function Offerpage() {
           <span>Name: {v.hotelName}</span> <br />
           <span>Rating: {v.rating}</span> <br />
           <span>Address: {v.dish[0].price}</span>
+          {/* <img
+            src="C:/Users/tamil/eclipse-workspace/Loginpage/src/main/resources/images/asset 1.jpeg"
+            width={100}
+            alt="jfdlk.jpg"
+          />
+          {v.dish[0].imageName} */}
+          <img
+            src={"http://localhost:1010/images/" + v.dish[0].imageName}
+            width={100}
+          />
+          <p>{v.dish[0].imageName}</p>
         </div>
       ))}
       {/* <div className='col-lg-3 col-md-6 col-sm-12 mainCard '>

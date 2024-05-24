@@ -14,11 +14,6 @@ function RegisterPage() {
     password: "",
   });
 
-  const [usernamevalid, setusernamevalid] = useState(false);
-  const [moblievalid, setmoblievalid] = useState(false);
-  const [emailvalid, setemailvalid] = useState(false);
-  const [passwordvalid, setpasswordvalid] = useState(false);
-
   const [usernameerror, setusernameerror] = useState("");
   const [moblieerror, setmoblieerror] = useState("");
   const [emailerror, setemailerror] = useState("");
@@ -30,79 +25,69 @@ function RegisterPage() {
 
   const formSubmit = (event) => {
     event.preventDefault();
-
+    //Username
     if (!userdata.username == "") {
       if (userdata.username.length >= 3) {
         setusernameerror("");
-        setusernamevalid(true);
+        //Password
+        const passwordPattern =
+          /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        if (!userdata.password == "") {
+          const ispassvalid = userdata.password.match(passwordPattern);
+          if (ispassvalid) {
+            setpassworderror("");
+            //Email
+            const emailPattern =
+              /^[^\.\s][\w\-]+(\.[\w\-]+)*@([\w-]+\.)+[\w-]{2,}$/;
+            if (!userdata.email == " ") {
+              const isemailvalid = userdata.email.match(emailPattern);
+              if (isemailvalid) {
+                setemailerror("");
+                //Phone Number
+                if (!userdata.phoneno == "") {
+                  if (userdata.phoneno.length == 10) {
+                    setmoblieerror("");
+                    axios
+                      .post("http://localhost:1010/user/add", userdata)
+                      .then((res) => {
+                        console.log(res);
+                        console.log(userdata);
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
+                    setuserdata({
+                      ...userdata,
+                      username: "",
+                      phoneno: "",
+                      email: "",
+                      password: "",
+                    });
+                  } else {
+                    setmoblieerror("Mobile no only have 10 digits");
+                  }
+                } else {
+                  setmoblieerror("Please Fill The mobile no");
+                }
+              } else {
+                setemailerror("Enter a Correct Email");
+              }
+            } else {
+              setemailerror("Please Enter a Email");
+            }
+          } else {
+            setpassworderror(
+              "password must be have one number, one captial letter, one small letter and one symbol, minimum 8 charactare"
+            );
+          }
+        } else {
+          setpassworderror("Please Enter The Password");
+        }
       } else {
         setusernameerror("Enter Minimum 3 Character");
       }
     } else {
       setusernameerror("Please Fill The Username");
-    }
-
-    const passwordPattern =
-      /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-    if (!userdata.password == "") {
-      const ispassvalid = userdata.password.match(passwordPattern);
-      if (ispassvalid) {
-        setpassworderror("");
-        setpasswordvalid(true);
-      } else {
-        setpassworderror(
-          "password must be have one number, one captial letter, one small letter and one symbol, minimum 8 charactare"
-        );
-      }
-    } else {
-      setpassworderror("Please Enter The Password");
-    }
-    
-    const emailPattern = /^[^\.\s][\w\-]+(\.[\w\-]+)*@([\w-]+\.)+[\w-]{2,}$/;
-    if (!userdata.email == " ") {
-      const isemailvalid = userdata.email.match(emailPattern);
-      if (isemailvalid) {
-        setemailerror("");
-        setemailvalid(true);
-      } else {
-        setemailerror("Enter a Correct Email");
-      }
-    } else {
-      setemailerror("Please Enter a Email");
-    }
-    if (!userdata.phoneno == "") {
-      if (userdata.phoneno.length == 10) {
-        setmoblievalid(true);
-        setmoblieerror("");
-      } else {
-        setmoblieerror("Mobile no only have 10 digits");
-      }
-    } else {
-      setmoblieerror("Please Fill The mobile no");
-    }
-
-    if (
-      usernamevalid == true &&
-      moblievalid == true &&
-      emailvalid == true &&
-      passwordvalid == true
-    ) {
-      axios
-        .post("http://localhost:1010/user/add", userdata)
-        .then((res) => {
-          console.log(res);
-          console.log(userdata);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      setuserdata({
-        ...userdata,
-        username: "",
-        phoneno: "",
-        email: "",
-        password: "",
-      });
     }
   };
 
@@ -179,12 +164,14 @@ function RegisterPage() {
                 SUBMIT
               </Button>{" "}
               <br />
-              <Link to="/login" className=" "
-              style={{
-                textDecoration: "none",
-                color: "#fc8019",
-                fontWeight: "bold"
-              }}
+              <Link
+                to="/login"
+                className=" "
+                style={{
+                  textDecoration: "none",
+                  color: "#fc8019",
+                  fontWeight: "bold",
+                }}
               >
                 Signup?
               </Link>
